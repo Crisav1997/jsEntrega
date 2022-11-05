@@ -73,7 +73,34 @@ function finalizar(){
     alert("Pedido finalizado,el total de pedidos es " + i)
     alert("El monto total es de " + precioFinal)
 }
-compra();
-eleccion();
-finalizar();
+//compra();
+//eleccion();
+//finalizar();
+
+//entrega2
+
+class productos{
+    constructor(nombre,precio,salsa,carnes){
+        this.nombre=nombre;
+        this.precio=precio;
+        this.salsa=salsa;
+        this.carnes=carnes;
+    }
+    descApp(){
+        this.precio=this.precio*0,9;
+    }
+}
+const burger1= new productos("cheese",1250,"bbq",2);
+const burger2= new productos("beacon",1400,"mcdonals",3);
+const burger3= new productos("smosh",1500,"island",2);
+const carta=[];
+carta.push(burger1);
+carta.push(burger2);
+carta.push(burger3);
+
+for(const menu of carta){
+    console.log(menu.nombre)
+    console.log(menu.precio)
+}
+const ingredientes=["pan","carne","lechuga","tomate","pepino","cheddar","dambo","sesamo"]
 
