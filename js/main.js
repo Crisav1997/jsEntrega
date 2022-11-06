@@ -79,6 +79,8 @@ function finalizar(){
 
 //entrega2
 
+
+
 class productos{
     constructor(nombre,precio,salsa,carnes){
         this.nombre=nombre;
@@ -98,9 +100,34 @@ carta.push(burger1);
 carta.push(burger2);
 carta.push(burger3);
 
-for(const menu of carta){
-    console.log(menu.nombre)
-    console.log(menu.precio)
+
+
+function verMenu(){
+    for(const menu of carta){
+        console.log("#"+menu.nombre+" Precio: "+ menu.precio)
+
+    }  
 }
 const ingredientes=["pan","carne","lechuga","tomate","pepino","cheddar","dambo","sesamo"]
-
+const opciones=["1) Ver Menu","2) Hacer Pedido","3) Pedido Especial","4) Modo Sup"]
+function inicio(){
+    let ingreso1;
+    switch(ingreso1 = parseInt(prompt("Bienvenidos,que desea hacer? " + opciones ))){
+        case 1:
+            {console.log("ver menu")
+            verMenu();
+                break;};
+        case 2:{console.log("hacer pedido")
+                break;}
+        case 3:{console.log("Pedido Especial")
+                break;}
+        case 4:{console.log("Modo Sup")
+                break;}
+        default:{
+            alert("opcion incorrecta, elegir nuevamente")
+            inicio();
+        }
+            
+    }
+}
+inicio();
