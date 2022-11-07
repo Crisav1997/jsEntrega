@@ -13,7 +13,7 @@ producto=prompt("Ingrese un combo : Beacon - Cheese - Smosh ");
 elegir();
 while(bandera1){
     alert("No contamos con el producto seleccionado" )
-    producto=prompt("Ingrese nuevamente un producto entre los siguientes:  Beacon Deluxe - CheeseBurger - Smosh");
+    producto=prompt("Ingrese nuevamente un producto entre los siguientes: Beacon - Cheese - Smosh");
     elegir()
 }
 cantidad=prompt("¿Cuantas unidades quieres?")
@@ -73,14 +73,7 @@ function finalizar(){
     alert("Pedido finalizado,el total de pedidos es " + i)
     alert("El monto total es de " + precioFinal)
 }
-//compra();
-//eleccion();
-//finalizar();
-
-//entrega2
-
-
-
+//PARTE 2
 class productos{
     constructor(nombre,precio,salsa,carnes){
         this.nombre=nombre;
@@ -99,41 +92,70 @@ const carta=[];
 carta.push(burger1);
 carta.push(burger2);
 carta.push(burger3);
-
-
+const ingredientes=["pan","carne","lechuga","tomate","pepino","cheddar","dambo","sesamo"]
 
 function verMenu(){
-    
     for(const menu of carta){
         alert("#"+menu.nombre+" Precio: "+ menu.precio)}
-    inicio()  }
-
+    inicio()}
 function especial(){
-    alert("agregar algo")
+    alert("Vamos a crear tu propia Hamburguesa")
+    let carnes=prompt("¿Cuantas Carnes queres en tu burger?Max 5")
+    while((carnes>5)||(carnes<1)){
+        alert("Carnes Mal Seleccionada!")
+        carnes=prompt("¿Cuantas Carnes queres en tu burger?Max 5")
+    }
+    console.log("eligimo carne")    
 }
+
+function busqueda(arr,filtro){
+    const este=arr.find((servicio)=>{
+        return servicio.nombre=filtro
+    })
+    return este
+}
+
 function sup(){
-        contra=prompt("ingrese contraseña")
+    contra=prompt("ingrese contraseña")
     while(contra!=contraseña){
         alert("Contraseña Incorrecta");
         contra=prompt("ingrese contraseña");
     }
-    // const carta1=carta.map((el)=>el.precio){
-    //     precio=el.precio*1.5
-    // }
-    const burger4= new productos(prompt("Ingrese Hamburguesa"),parseInt(prompt("Precio")),prompt("Ingrese salsa"),parseInt(prompt("Ingrese Carnes")));
-    console.log(burger4);    
+    const opciones=["1)Agregar Producto","2)Eliminar producto","3)Filtrar Producto por Precio"]
+    switch(parseInt(prompt("Sup,que desea hacer? " + opciones ))){
+        case 1:{
+            console.log("Agregar Producto")
+            const burgerNew= new productos(prompt("Ingrese Hamburguesa"),parseInt(prompt("Precio")),prompt("Ingrese salsa"),parseInt(prompt("Ingrese Carnes")));
+            carta.push(burgerNew)
+            console.log(burgerNew);
+            break;
+        }
+        case 2:{
+            console.log("¿Cual producto desea quitar?"+ carta)
+            carta.splice(parseInt(prompt("Menu N°")),1)
+            break;
+        }
+        case 3:{
+            let usuario=prompt("ingrese criterio de busqueda")
+            const buscar=busqueda(carta,usuario)
+            console.log(buscar)
+            break;
+        }
+        default:{
+            console.log("Opcion Incorrecta")
+            break;
+        }
+    }
+    inicio();    
 }
-
-const ingredientes=["pan","carne","lechuga","tomate","pepino","cheddar","dambo","sesamo"]
-const opciones=["1) Ver Menu","2) Hacer Pedido","3) Pedido Especial","4) Modo Sup"]
 function inicio(){
-    let ingreso1;
-    switch(ingreso1 = parseInt(prompt("Bienvenidos,que desea hacer? " + opciones ))){
+    const opciones=["1) Ver Menu","2) Hacer Pedido","3) Pedido Especial","4) Modo Sup","5)Bye bye"]
+    switch(parseInt(prompt("Bienvenidos,que desea hacer? " + opciones ))){
         case 1:
-            {console.log("ver menu")
+            {console.log("Ver MENU")
                 verMenu();
                 break;};
-        case 2:{console.log("hacer pedido")
+        case 2:{console.log("Hacer Pedido")
                 compra();
                 eleccion();
                 finalizar();
@@ -144,10 +166,12 @@ function inicio(){
         case 4:{console.log("Modo Sup")
                 sup();
                 break;}
+        case 5:{alert("Gracias , adios.")
+                break;}
         default:{
-            alert("opcion incorrecta, elegir nuevamente")
+            alert("Opcion incorrecta, Elegir nuevamente")
             inicio();
         }
-    }inicio();
+    };
 }
 inicio();
