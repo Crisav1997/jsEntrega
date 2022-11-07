@@ -117,6 +117,9 @@ function sup(){
         alert("Contraseña Incorrecta");
         contra=prompt("ingrese contraseña");
     }
+    // const carta1=carta.map((el)=>el.precio){
+    //     precio=el.precio*1.5
+    // }
     const burger4= new productos(prompt("Ingrese Hamburguesa"),parseInt(prompt("Precio")),prompt("Ingrese salsa"),parseInt(prompt("Ingrese Carnes")));
     console.log(burger4);    
 }
