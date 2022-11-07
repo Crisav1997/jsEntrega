@@ -7,7 +7,7 @@ const IVA=1.21;
 let i=1;
 let bandera1
 let precioFinal=0;
-
+let contraseña="hola";
 function compra(){
 producto=prompt("Ingrese un combo : Beacon - Cheese - Smosh ");
 elegir();
@@ -92,9 +92,9 @@ class productos{
         this.precio=this.precio*0,9;
     }
 }
-const burger1= new productos("cheese",1250,"bbq",2);
-const burger2= new productos("beacon",1400,"mcdonals",3);
-const burger3= new productos("smosh",1500,"island",2);
+const burger1= new productos("Chesse Burger",1250,"bbq",2);
+const burger2= new productos("Beacon Deluxe",1400,"mcdonals",3);
+const burger3= new productos("Smosh Blend",1500,"island",2);
 const carta=[];
 carta.push(burger1);
 carta.push(burger2);
@@ -103,11 +103,24 @@ carta.push(burger3);
 
 
 function verMenu(){
+    
     for(const menu of carta){
-        console.log("#"+menu.nombre+" Precio: "+ menu.precio)
+        alert("#"+menu.nombre+" Precio: "+ menu.precio)}
+    inicio()  }
 
-    }  
+function especial(){
+    alert("agregar algo")
 }
+function sup(){
+        contra=prompt("ingrese contraseña")
+    while(contra!=contraseña){
+        alert("Contraseña Incorrecta");
+        contra=prompt("ingrese contraseña");
+    }
+    const burger4= new productos(prompt("Ingrese Hamburguesa"),parseInt(prompt("Precio")),prompt("Ingrese salsa"),parseInt(prompt("Ingrese Carnes")));
+    console.log(burger4);    
+}
+
 const ingredientes=["pan","carne","lechuga","tomate","pepino","cheddar","dambo","sesamo"]
 const opciones=["1) Ver Menu","2) Hacer Pedido","3) Pedido Especial","4) Modo Sup"]
 function inicio(){
@@ -115,19 +128,23 @@ function inicio(){
     switch(ingreso1 = parseInt(prompt("Bienvenidos,que desea hacer? " + opciones ))){
         case 1:
             {console.log("ver menu")
-            verMenu();
+                verMenu();
                 break;};
         case 2:{console.log("hacer pedido")
+                compra();
+                eleccion();
+                finalizar();
                 break;}
         case 3:{console.log("Pedido Especial")
+                especial();
                 break;}
         case 4:{console.log("Modo Sup")
+                sup();
                 break;}
         default:{
             alert("opcion incorrecta, elegir nuevamente")
             inicio();
         }
-            
-    }
+    }inicio();
 }
 inicio();
