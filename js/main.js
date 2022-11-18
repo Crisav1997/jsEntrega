@@ -94,10 +94,8 @@ carta.push(burger2);
 carta.push(burger3);
 const ingredientes=["pan","carne","lechuga","tomate","pepino","cheddar","dambo","sesamo"]
 
-function verMenu(){
-    for(const menu of carta){
-        alert("#"+menu.nombre+" Precio: "+ menu.precio)}
-    inicio()}
+
+
 function especial(){
     alert("Vamos a crear tu propia Hamburguesa")
     let carnes=prompt("¿Cuantas Carnes queres en tu burger?Max 5")
@@ -110,7 +108,7 @@ function especial(){
 
 function busqueda(arr,filtro){
     const este=arr.find((servicio)=>{
-        return servicio.nombre=filtro
+        return servicio.nombre.includes(filtro);
     })
     return este
 }
@@ -121,7 +119,7 @@ function sup(){
         alert("Contraseña Incorrecta");
         contra=prompt("ingrese contraseña");
     }
-    const opciones=["1)Agregar Producto","2)Eliminar producto","3)Filtrar Producto por Precio"]
+    const opciones=["1)Agregar Producto","2)Eliminar producto","3)Filtrar Producto"]
     switch(parseInt(prompt("Sup,que desea hacer? " + opciones ))){
         case 1:{
             console.log("Agregar Producto")
@@ -174,4 +172,17 @@ function inicio(){
         }
     };
 }
-inicio();
+
+//PARTE 3
+
+
+function verMenu(){
+    for(const menu of carta){
+        console.log("#"+menu.nombre+" Precio: "+ menu.precio)}
+}
+
+
+let boton=document.getElementById('btnPrincipal');
+boton.addEventListener('click',()=>{
+verMenu();
+})
